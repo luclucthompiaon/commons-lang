@@ -1071,18 +1071,10 @@ public class StringUtils {
         for (int i = 0; i < csLength; i++) {
             final char ch = cs.charAt(i);
             for (int j = 0; j < searchLength; j++) {
-                // if (searchChars[j] == ch) {
-                //     if (!Character.isHighSurrogate(ch) || j == searchLast || i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
-                //         return true;
-                //     }
-                // }
-                private static boolean isCharSequenceMatch(final CharSequence cs, final int csIndex, final int csLast, final char[] searchChars, final int searchIndex,
-                        final int searchLast) {
-                    final char ch = cs.charAt(csIndex);
-                    if (searchChars[searchIndex] != ch) {
-                        return false;
+                if (searchChars[j] == ch) {
+                    if (!Character.isHighSurrogate(ch) || j == searchLast || i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
+                        return true;
                     }
-                    return !Character.isHighSurrogate(ch) || searchIndex == searchLast || csIndex < csLast && searchChars[searchIndex + 1] == cs.charAt(csIndex + 1);
                 }
             }
         }
@@ -1249,18 +1241,10 @@ public class StringUtils {
         for (int i = 0; i < csLen; i++) {
             final char ch = cs.charAt(i);
             for (int j = 0; j < searchLen; j++) {
-                // if (searchChars[j] == ch) {
-                //     if (!Character.isHighSurrogate(ch) || j == searchLast || i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
-                //         return false;
-                //     }
-                // }
-                private static boolean isCharSequenceMatch(final CharSequence cs, final int csIndex, final int csLast, final char[] searchChars, final int searchIndex,
-                        final int searchLast) {
-                    final char ch = cs.charAt(csIndex);
-                    if (searchChars[searchIndex] != ch) {
+                if (searchChars[j] == ch) {
+                    if (!Character.isHighSurrogate(ch) || j == searchLast || i < csLast && searchChars[j + 1] == cs.charAt(i + 1)) {
                         return false;
                     }
-                    return !Character.isHighSurrogate(ch) || searchIndex == searchLast || csIndex < csLast && searchChars[searchIndex + 1] == cs.charAt(csIndex + 1);
                 }
             }
         }
